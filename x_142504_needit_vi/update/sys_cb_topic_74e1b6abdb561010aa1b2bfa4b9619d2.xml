@@ -74,8 +74,8 @@
             "mode": "script"
           },
           "applicability": {
-            "value": "",
-            "mode": "query"
+            "mode": "script",
+            "value": ""
           }
         },
         "99638bc862ed460a9249a03cf213e8f0": {
@@ -273,6 +273,84 @@
             "mode": "script",
             "value": "(function execute() {\n\t    // If Live Chat is available, return true\n\t    // otherwise, return false\n\t    if (vaSystem.isLiveAgentAvailable()){\n\t        return true;\n\t    } else {\n\t        return false;\n\t    }\n\t})()\n"
           }
+        },
+        "56290e1d1235401e9ff524bca9c6fd6c": {
+          "stepType": "ChoicePrompt",
+          "name": "what to update?",
+          "prompt": {
+            "value": "what to update?",
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "optional": false,
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "variableId": "f82e674092df4663976b92b27c565be5",
+          "id": "56290e1d1235401e9ff524bca9c6fd6c",
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "entity": ""
+        },
+        "24177e48482846c8b4895461cd744145": {
+          "id": "24177e48482846c8b4895461cd744145",
+          "stepType": "Decision",
+          "name": "update Feild"
+        },
+        "0dfe8aca8c5e4366ad18af7b12eb4b3b": {
+          "id": "0dfe8aca8c5e4366ad18af7b12eb4b3b",
+          "stepType": "Prompt",
+          "name": "New Short Descrption",
+          "prompt": {
+            "value": "what wiil be the short description?",
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "optional": false,
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "entity": "",
+          "variableId": "3b841cfbe48043b790238b968a5b20a9"
+        },
+        "2ff3c065e6c34367a3868f895ed8bce1": {
+          "id": "2ff3c065e6c34367a3868f895ed8bce1",
+          "stepType": "CrudAction",
+          "name": "Change short description",
+          "template": "short_description={{vaInputs.new_short_descrption}}",
+          "mode": "update",
+          "record": "055ec0837a21495ca92e346fb0735078",
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "variableId": "5173826b5a2f4d249e62114919090b7a"
         }
       },
       "edges": [
@@ -341,14 +419,6 @@
             "mode": "query"
           },
           "label": "no"
-        },
-        {
-          "id": "c806aafdb33a410cb7d70e896d81c93c",
-          "edgeType": "Edge",
-          "source": "fef2439498f7444885b0bc74d9a27c1a",
-          "target": "0b41c80668894372b2e201670e563362",
-          "sourcePort": "",
-          "targetPort": ""
         },
         {
           "id": "3711a5f2ca7749c298044be5622c8b3a",
@@ -423,6 +493,77 @@
           "target": "112b3c2e65a14988899c5c1bfab8942a",
           "sourcePort": "",
           "targetPort": ""
+        },
+        {
+          "id": "c806aafdb33a410cb7d70e896d81c93c",
+          "edgeType": "Edge",
+          "source": "fef2439498f7444885b0bc74d9a27c1a",
+          "target": "56290e1d1235401e9ff524bca9c6fd6c",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "51b11c62eaa245b0b9185bea36925e32",
+          "edgeType": "Edge",
+          "source": "56290e1d1235401e9ff524bca9c6fd6c",
+          "target": "24177e48482846c8b4895461cd744145",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "b1623f52879e4c9caef58d3934510d51",
+          "edgeType": "Branch",
+          "source": "24177e48482846c8b4895461cd744145",
+          "target": "0b41c80668894372b2e201670e563362",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "",
+            "mode": "query"
+          },
+          "label": "When needed"
+        },
+        {
+          "id": "443bd190d2864cdab09012dff6764ceb",
+          "edgeType": "Branch",
+          "source": "24177e48482846c8b4895461cd744145",
+          "target": "0dfe8aca8c5e4366ad18af7b12eb4b3b",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "mode": "query",
+            "value": ""
+          },
+          "label": "Short  Description"
+        },
+        {
+          "id": "8736b1fc2fb9443e82c15146ebf94173",
+          "edgeType": "Edge",
+          "source": "0dfe8aca8c5e4366ad18af7b12eb4b3b",
+          "target": "2ff3c065e6c34367a3868f895ed8bce1",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "462690762419453dabd0181c361d6592",
+          "edgeType": "Edge",
+          "source": "2ff3c065e6c34367a3868f895ed8bce1",
+          "target": "bb31e19afe2c49e1b22ad57b98ef849a",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "9ef5dd8318c640ffa9a4d3e2ec039f8c",
+          "edgeType": "Branch",
+          "source": "24177e48482846c8b4895461cd744145",
+          "target": "b4ce82f1211c47baa2812c91fbc8a30f",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "mode": "query",
+            "value": ""
+          },
+          "label": "Nothing"
         }
       ]
     }
@@ -501,6 +642,45 @@
       "label": "search_count",
       "varType": "script",
       "category": "vaVars"
+    },
+    "f82e674092df4663976b92b27c565be5": {
+      "id": "f82e674092df4663976b92b27c565be5",
+      "name": "what_to_update_",
+      "label": "What To Update?",
+      "varType": "choice",
+      "choices": [
+        {
+          "label": "Short Description",
+          "value": "short description"
+        },
+        {
+          "label": "When needed",
+          "value": "when needed",
+          "checked": true
+        },
+        {
+          "label": "Nothing",
+          "value": "nothing",
+          "checked": true
+        }
+      ],
+      "category": "vaInputs"
+    },
+    "3b841cfbe48043b790238b968a5b20a9": {
+      "id": "3b841cfbe48043b790238b968a5b20a9",
+      "name": "new_short_descrption",
+      "label": "New Short Descrption",
+      "varType": "string",
+      "category": "vaInputs"
+    },
+    "5173826b5a2f4d249e62114919090b7a": {
+      "id": "5173826b5a2f4d249e62114919090b7a",
+      "name": "change_short_description",
+      "label": "Change Short Description",
+      "varType": "reference",
+      "table": "",
+      "inactive": true,
+      "category": "vaInputs"
     }
   }
 }</graph>
@@ -519,14 +699,14 @@
         <sys_created_on>2020-08-04 13:26:49</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_id>74e1b6abdb561010aa1b2bfa4b9619d2</sys_id>
-        <sys_mod_count>23</sys_mod_count>
+        <sys_mod_count>32</sys_mod_count>
         <sys_name>Update NeedIt Records</sys_name>
         <sys_package display_value=" NeedIt Virtual Agent Conversations" source="x_142504_needit_vi">9f2b62a7db561010aa1b2bfa4b96192c</sys_package>
         <sys_policy/>
         <sys_scope display_value=" NeedIt Virtual Agent Conversations">9f2b62a7db561010aa1b2bfa4b96192c</sys_scope>
         <sys_update_name>sys_cb_topic_74e1b6abdb561010aa1b2bfa4b9619d2</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-08-04 21:23:47</sys_updated_on>
+        <sys_updated_on>2020-08-09 16:49:33</sys_updated_on>
         <variables/>
     </sys_cb_topic>
     <sys_variable_value action="delete_multiple" query="document_key=74e1b6abdb561010aa1b2bfa4b9619d2"/>
