@@ -225,7 +225,8 @@
           "mode": "variable",
           "tableName": "x_58872_needit_needit",
           "fields": [
-            "u_when_needed"
+            "u_when_needed",
+            "short_description"
           ],
           "applicability": {
             "value": "",
@@ -518,7 +519,7 @@
           "sourcePort": "",
           "targetPort": "",
           "expression": {
-            "value": "",
+            "value": "what_to_update_=when needed",
             "mode": "query"
           },
           "label": "When needed"
@@ -531,8 +532,8 @@
           "sourcePort": "",
           "targetPort": "",
           "expression": {
-            "mode": "query",
-            "value": ""
+            "value": "what_to_update_=short description",
+            "mode": "query"
           },
           "label": "Short  Description"
         },
@@ -560,8 +561,8 @@
           "sourcePort": "",
           "targetPort": "",
           "expression": {
-            "mode": "query",
-            "value": ""
+            "value": "what_to_update_=nothing",
+            "mode": "query"
           },
           "label": "Nothing"
         }
@@ -699,14 +700,14 @@
         <sys_created_on>2020-08-04 13:26:49</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_id>74e1b6abdb561010aa1b2bfa4b9619d2</sys_id>
-        <sys_mod_count>32</sys_mod_count>
+        <sys_mod_count>34</sys_mod_count>
         <sys_name>Update NeedIt Records</sys_name>
         <sys_package display_value=" NeedIt Virtual Agent Conversations" source="x_142504_needit_vi">9f2b62a7db561010aa1b2bfa4b96192c</sys_package>
         <sys_policy/>
         <sys_scope display_value=" NeedIt Virtual Agent Conversations">9f2b62a7db561010aa1b2bfa4b96192c</sys_scope>
         <sys_update_name>sys_cb_topic_74e1b6abdb561010aa1b2bfa4b9619d2</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-08-09 16:49:33</sys_updated_on>
+        <sys_updated_on>2020-08-09 19:16:52</sys_updated_on>
         <variables/>
     </sys_cb_topic>
     <sys_variable_value action="delete_multiple" query="document_key=74e1b6abdb561010aa1b2bfa4b9619d2"/>
